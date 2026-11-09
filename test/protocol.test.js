@@ -7,6 +7,7 @@ import {
   normalizeSessionSummary,
   isOrdinarySession,
   basenameOf,
+  lastEventTime,
 } from '../lib/protocol.js'
 
 test('contentText keeps only text blocks', () => {
@@ -61,4 +62,15 @@ test('isOrdinarySession excludes subagent and archived rows', () => {
   assert.equal(isOrdinarySession({ id: 'a', origin: 'subagent', archived: false }), false)
   assert.equal(isOrdinarySession({ id: 'b', origin: 'ordinary', archived: true }), false)
   assert.equal(isOrdinarySession({ id: 'c', origin: 'ordinary', archived: false }), true)
+})
+
+test('lastEventTime reads numeric event timestamps and ignores malformed values', () => {
+  assert.equal(lastEventTime([
+    { type: 'session', time: 100, data: {} },
+    { type: 'assistant/message', time: 250, data: {} },
+    { type: 'user/message', time: '300', data: {} },
+    null,
+  ]), 250)
+  assert.equal(lastEventTime([]), null)
+  assert.equal(lastEventTime(undefined), null)
 })

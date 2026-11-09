@@ -64,7 +64,7 @@ curl --fail --silent "$(python -c 'import json,os,pathlib; p=pathlib.Path(os.env
 A healthy host returns the plugin identity and a redacted workspace list:
 
 ```json
-{"ok":true,"plugin":"rename-chats","pluginVersion":"0.1.0","bridgeVersion":1,"pid":1234,"workspaces":[{"id":"492bbba8-3b91-4a43-8414-b79375ce4f1c","path":"D:\\\\app\\\\DSH workspace\\\\DS-RSI","title":"DS-RSI","sessionCount":7}]}
+{"ok":true,"plugin":"rename-chats","pluginVersion":"0.1.1","bridgeVersion":1,"pid":1234,"workspaces":[{"id":"492bbba8-3b91-4a43-8414-b79375ce4f1c","path":"D:\\\\app\\\\DSH workspace\\\\DS-RSI","title":"DS-RSI","sessionCount":7}]}
 ```
 
 After a restart the capability URL changes; the old file is replaced. A stale
@@ -113,11 +113,16 @@ Each row:
 {"sessionId": "session-..."}
 ```
 
-Returns the latest title snapshot, its source, the creation time, and the real
-human messages. DSH records system context as `user/message` too; this bridge
+Returns the latest title snapshot, its source, the creation time, the latest
+event time, and the real human messages. DSH records system context as
+`user/message` too; this bridge
 returns only events whose `data.source.kind` is `"user"`. It keeps the first
 three and last nine human messages (up to 4,000 characters each), which is
 enough to identify the task without flooding the preview.
+
+`lastActivityAt` is the maximum numeric `time` across the session event log,
+in milliseconds. Use it to select conversations active today instead of
+re-reading every session on each pass.
 
 ### `POST /rename`
 
