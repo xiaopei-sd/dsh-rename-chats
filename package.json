@@ -1,5 +1,5 @@
 {
-  "name": "@xiaopei-sd/dsh-rename-chats",
+  "name": "dsh-rename-chats",
   "version": "0.1.0",
   "description": "Local DSH host bridge for previewing and renaming DSH session titles through the official session-title service.",
   "license": "MIT",

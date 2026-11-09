@@ -1,4 +1,4 @@
 # dsh bundle layer: mount the local rename bridge.
 - insert:
     - id: rename-chats
-      name: '@xiaopei-sd/dsh-rename-chats'
+      name: 'dsh-rename-chats'

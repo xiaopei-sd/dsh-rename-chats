@@ -46,7 +46,7 @@ $DSH_HOME/rename-chats/bridge.json   (mode 0600)
 From npm:
 
 ```bash
-dsh plugin --profile desktop add @xiaopei-sd/dsh-rename-chats
+dsh plugin --profile desktop add dsh-rename-chats
 ```
 
 Or from this checkout:
