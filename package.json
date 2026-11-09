@@ -1,0 +1,55 @@
+{
+  "name": "@xiaopei-sd/dsh-rename-chats",
+  "version": "0.1.0",
+  "description": "Local DSH host bridge for previewing and renaming DSH session titles through the official session-title service.",
+  "license": "MIT",
+  "type": "module",
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./protocol": "./lib/protocol.js",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE",
+    "skill"
+  ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "rename",
+    "session-title",
+    "chat-title",
+    "会话标题"
+  ],
+  "author": "xiaopei-sd",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xiaopei-sd/dsh-rename-chats.git"
+  },
+  "bugs": {
+    "url": "https://github.com/xiaopei-sd/dsh-rename-chats/issues"
+  },
+  "homepage": "https://github.com/xiaopei-sd/dsh-rename-chats#readme",
+  "engines": {
+    "dsh": ">=0.2.0-rc.2 <0.2.3-0",
+    "node": ">=22"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  },
+  "scripts": {
+    "test": "node --test",
+    "pack": "npm pack --dry-run"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
